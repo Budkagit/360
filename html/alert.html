@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<style>
+    input[type=text],
+    input[type=email] {
+        width: 100%;
+        box-sizing: border-box;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        background-color: #6128bc;
+        width: 100%;
+        height: 45px;
+    }
+
+    body {
+        /* background-color: aquamarine; */
+        background-image: url('../html/images/pexels-nadi-lindsay-3078831.jpg'); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .container {
+        padding: 100px;
+        
+    }
+    .hello{
+        color: blueviolet;
+    }
+    
+</style>
+</head>
+
+<body>
+
+
+    <form>
+
+        <div class="container">
+            <h2 class="hello">Hello</h2>
+            <input id="hi" type="text" placeholder="Enter Username" name="uname">
+            <input type="email" placeholder="Enter email" mail="email">
+            <button onclick="myFunction()">submit</button>
+
+        </div>
+
+    </form>
+    <h1 id='message'></h1>
+</body>
+<script>
+    function myFunction() {
+        var userInput = document.querySelector('#hi');
+        var message = document.querySelector('#message');
+        message.innerHTML = userInput.value;
+        console.log(document.querySelector('#userInput'));
+        alert(`hi ${userInput.value}`)
+    }
+</script>
+
+</html>

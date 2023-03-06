@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>cashify</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .header1 {
+            width: 100%;
+            height: 60px;
+            background-color:white;
+        }
+
+        .header2 {
+            width: 100%;
+            height: 40px;
+            background-color: black;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            padding-left: 80px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .right {
+            width: 65%;
+            height: 100%;
+            background-color:white;
+        }
+
+        .left {
+            width: 35%;
+            height: 100%;
+            background-color:whitesmoke;
+        }
+
+        .all {
+            width: 100%;
+            height: 100vh;
+        }
+        .card{
+        color:black;
+        width: 600px;
+        height: 30%;
+        display: flex;
+        flex-direction: row;
+        box-shadow: 12px;
+        border: 50px;
+        border-radius: 12px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        
+        }
+        .phone{
+        width: 150%;
+        height: 80%;
+        background-image: url('../html/images/iphone11-removebg-preview\ \(1\).png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-top: 20px;
+        }
+        .title{
+        color:black;
+        width: 300%;
+        margin-top: 20px ;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+        }
+        .rate{
+        border-radius: 6px;
+        background-color: rgb(14, 243, 14);
+        /* padding: 5px; */
+        padding-right: 9%;
+        width: 1%;
+        margin-top:5px;
+        display: flex;
+        flex-direction: row;
+        }
+        .text{
+        color:black;
+        display: flex;
+        flex-direction: column;
+        width:300%;
+        }
+        .numrate{
+            margin-top: 5%;
+            display: flex;
+             flex-direction: row;
+        }
+      
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <div class="header1"></div>
+        <div class="header2"></div>
+        <div class="container">
+            <div class="left"></div>
+            <div class="right">
+             
+            </div>
+        </div>
+    </div>
+    <div>
+
+
+    </div>
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            const myContent=document.querySelector('.right');
+            let data;
+            let discountedPrice;
+            fetch('https://dummyjson.com/products')
+                .then(res => res.json())
+                .then(json => {
+                    data=json;
+                    const showHtml=data.products.map((el,ind)=> {
+discountedPrice=Math.floor(el.price-(el.price*el.discountedPrice/100));
+
+return `
+<div class="card"
+                 <img src="${el.images[0]}">
+                 <div class="description">
+                    <h3>${el.title}</h3>
+                    <div class="rate">${el.rating}*</div>
+                    <div class="price">
+                        <h3 style="color: darkorange; margin-rigth:16px; font-size:24px;">$${discountedPrice}</h3>
+                        <h4 style="color: rgba(0,0,0,0.439);text-dicoration:line-through; font-size:14px; margin-right:6px;">$${el.price}</h4>
+                        <h5 style="color:rgb(29,189,29);">save${el.discountPercentage}%</5>   
+       </div>
+       <p style="font-size:14px;">${el.description}</p>
+       </div>
+       <div>`
+       })
+     
+       myContent.innerHTML=showHtml;
+       console.log(myContent)
+       })
+     
+        })
+    </script>
+</body>
+
+</html>
